@@ -1,7 +1,10 @@
 {
-  "orgName": "Demo company",
+  "orgName": "PS Demo",
   "edition": "Developer",
   "features": [],
+  "adminEmail": "tuannguyen.de@gmail.com",
+  "description": "Sample Org",
+  "hasSampleData": true,
   "settings": {
     "lightningExperienceSettings": {
       "enableS1DesktopEnabled": true
