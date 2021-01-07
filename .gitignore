@@ -24,6 +24,7 @@ yarn-error.log*
 
 # Dependency directories
 node_modules/
+force-app/main/default/objects/Case/
 
 # Eslint cache
 .eslintcache
@@ -36,3 +37,18 @@ Thumbs.db
 ehthumbs.db
 [Dd]esktop.ini
 $RECYCLE.BIN/
+
+force-app/main/default/classes/a.cls
+force-app/main/default/classes/a.cls-meta.xml
+force-app/main/default/classes/HelloWorld.cls
+force-app/main/default/classes/HelloWorld.cls-meta.xml
+force-app/main/default/pages/ApplyToolkit.page
+force-app/main/default/classes/StudentAidController.cls
+force-app/main/default/classes/StudentAidController.cls-meta.xml
+force-app/main/default/pages/ApplyToolkit.page-meta.xml
+force-app/main/default/triggers/AppleWatch.trigger
+force-app/main/default/triggers/AppleWatch.trigger-meta.xml
+force-app/main/default/triggers/hello.trigger
+force-app/main/default/triggers/hello.trigger-meta.xml
+force-app/main/default/triggers/NonExistentId.trigger
+force-app/main/default/triggers/NonExistentId.trigger-meta.xml
