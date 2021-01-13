@@ -12,11 +12,13 @@
             <h3>Leads for {searchTerm}</h3>
         </div>
         <div class="slds-m-around_small">
-            <template if:true={leads}>
-                <template for:each={leads} for:item="lead">
-                    <c-lead-list-item key={lead.Id} lead={lead} ></c-lead-list-item> 
-                </template>
-            </template>
+            <lightning-datatable
+                data={leads}
+                columns={cols}
+                key-field="id"
+                onrowaction ={handleRowAction}
+                hide-checkbox-column="true">
+            </lightning-datatable>
         </div>
     </lightning-card>
 </template>
