@@ -20,5 +20,8 @@
                 hide-checkbox-column="true">
             </lightning-datatable>
         </div>
+        <template if:true={error}>
+            The following error was entcountered :{error}
+        </template>
     </lightning-card>
 </template>

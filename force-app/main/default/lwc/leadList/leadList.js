@@ -1,5 +1,6 @@
 
-import { LightningElement, track} from 'lwc';
+import { LightningElement, track, wire} from 'lwc';
+import searchLeads from '@salesforce/apex/LeadSearchController.searchLeads';
 
 
 const _COLS = [
@@ -35,6 +36,7 @@ export default class LeadList extends (LightningElement) {
     @track leads =[];
     @track searchTerm;
     @track cols = _COLS;
+    @track error;
 
     
     handleSearchTermChange(event) {
@@ -42,4 +44,19 @@ export default class LeadList extends (LightningElement) {
         const selectedEvent = new CustomEvent('newsearch', {detail: this.searchTerm});
         this.dispatchEvent(selectedEvent);
     }    
+
+    @wire(searchLeads, {
+        searchTerm: '$searchTerm'
+    })
+    loadLeads({ error, data }) {
+        if (data) {
+            this.leads = data;
+            const selectedEvent = new CustomEvent('searchcomplete', {detail: this.searchTerm});
+            this.dispatchEvent(selectedEvent);
+            this.error = undefined;
+        } else if (error) {
+            this.error = error;
+            this.leads = undefined;
+        }
+    }
 }
