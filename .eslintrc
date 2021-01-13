@@ -1,0 +1,3 @@
+{
+    "extends": "plugin:@salesforce/eslint-config-lwc/recommended"
+ }
