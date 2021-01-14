@@ -2,6 +2,7 @@
 import { LightningElement, track, wire} from 'lwc';
 import searchLeads from '@salesforce/apex/LeadSearchController.searchLeads';
 
+const DELAY = 350;
 
 const _COLS = [
     {
@@ -41,8 +42,13 @@ export default class LeadList extends (LightningElement) {
     
     handleSearchTermChange(event) {
         this.searchTerm = event.target.value;
-        const selectedEvent = new CustomEvent('newsearch', {detail: this.searchTerm});
-        this.dispatchEvent(selectedEvent);
+ 
+        if (this.leads) {
+            window.clearTimeout(this.delayTimeout);
+            this.delayTimeout = setTimeout(() => {
+                this.dispatchEvent(new CustomEvent('newsearch', {detail: { value: this.searchTerm }}));
+            }, DELAY);           
+        }  
     }    
 
     @wire(searchLeads, {
@@ -51,8 +57,7 @@ export default class LeadList extends (LightningElement) {
     loadLeads({ error, data }) {
         if (data) {
             this.leads = data;
-            const selectedEvent = new CustomEvent('searchcomplete', {detail: this.searchTerm});
-            this.dispatchEvent(selectedEvent);
+            this.dispatchEvent(new CustomEvent('searchcomplete', {detail: { value: this.searchTerm }}));
             this.error = undefined;
         } else if (error) {
             this.error = error;
