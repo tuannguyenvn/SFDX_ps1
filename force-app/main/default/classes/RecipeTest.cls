@@ -1,6 +1,9 @@
 @istest
 public with sharing class RecipeTest {
     
+    @testsetup static void SetUp() {
+        
+    } 
     @istest
     static void  CompareInitObj() {
         Recipe var1 = new Recipe();
