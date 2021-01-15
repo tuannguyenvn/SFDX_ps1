@@ -28,4 +28,11 @@ public with sharing class RecipeTest {
         System.assertEquals(newRecipe.IstIngredients.size(), 2) ;
     }
 
+    @istest
+    static void ConstructorThisTest() {
+        Recipe newRecipe = new Recipe('gazpacho', 'fry garlic and onions, add tomatoes, cook 15 mins, cool');
+        
+        System.assertEquals(newRecipe.B_First, true);
+    }
+
 }

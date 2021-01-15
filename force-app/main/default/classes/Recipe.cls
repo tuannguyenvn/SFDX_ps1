@@ -5,6 +5,8 @@ public class Recipe {
    static {
        MAX_TEMP = 550;
    }
+   private boolean bFirst = false;
+   private static boolean bRecipesExist = false;	
 
    private List<Ingredient> lstIngredients;
     
@@ -26,10 +28,19 @@ public class Recipe {
         get {return lstIngredients;}
    }
 
+   public Boolean B_First {
+       get {return bFirst;}
+   }
+
    public Recipe () {
-       
+    if (!bRecipesExist) {
+        bRecipesExist = true;
+        bFirst = true;        
+    }
+
    }
    public Recipe (string recipName, string recipInstructions) {
+        this();
         lstIngredients = new List<Ingredient>();
         name = recipName;
         instructions = recipInstructions;
@@ -40,6 +51,11 @@ public class Recipe {
         for( Ingredient nextIngredient : lstIngredients) {
             nextIngredient.printDescription();
         }
+
+        if( bFirst ) {
+            system.debug('**********');
+        }
+
 		return;
     }
 
