@@ -1,7 +1,10 @@
 public class Recipe {
    public string name;
    public string instructions;
-   public final integer MAX_TEMP = 550;
+   public final static integer MAX_TEMP;
+   static {
+       MAX_TEMP = 550;
+   }
 
    private List<Ingredient> lstIngredients;
     
