@@ -44,9 +44,10 @@ export default class LeadList extends (LightningElement) {
         this.searchTerm = event.target.value;
  
         if (this.leads) {
+            var selectedEvent = new CustomEvent('newsearch', {detail: this.searchTerm});
             window.clearTimeout(this.delayTimeout);
             this.delayTimeout = setTimeout(() => {
-                this.dispatchEvent(new CustomEvent('newsearch', {detail: { value: this.searchTerm }}));
+                this.dispatchEvent(selectedEvent);
             }, DELAY);           
         }  
     }    
@@ -57,7 +58,8 @@ export default class LeadList extends (LightningElement) {
     loadLeads({ error, data }) {
         if (data) {
             this.leads = data;
-            this.dispatchEvent(new CustomEvent('searchcomplete', {detail: { value: this.searchTerm }}));
+            var selectedEvent = new CustomEvent('searchcomplete', {detail: this.searchTerm});
+            this.dispatchEvent(new CustomEvent(selectedEvent));
             this.error = undefined;
         } else if (error) {
             this.error = error;
