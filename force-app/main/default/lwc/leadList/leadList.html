@@ -9,7 +9,6 @@
                 value={searchTerm}
                 onchange={handleSearchTermChange}>
             </lightning-input>
-            <h3>Leads for {searchTerm}</h3>
         </div>
         <div class="slds-m-around_small">
             <lightning-datatable
@@ -21,7 +20,7 @@
             </lightning-datatable>
         </div>
         <template if:true={error}>
-            The following error was entcountered :{error}
+            <c-error-panel errors= {error}> </c-error-panel>
         </template>
     </lightning-card>
 </template>
