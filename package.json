@@ -39,5 +39,17 @@
     "**/{aura|lwc}/**": [
       "eslint"
     ]
-  }
+  },
+  "main": "index.js",
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tuannguyenvn/SFDX_ps1.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tuannguyenvn/SFDX_ps1/issues"
+  },
+  "homepage": "https://github.com/tuannguyenvn/SFDX_ps1#readme"
 }
