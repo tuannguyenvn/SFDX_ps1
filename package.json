@@ -3,6 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "description": "Salesforce App",
+  "type": "module",
   "scripts": {
     "lint": "npm run lint:lwc && npm run lint:aura",
     "lint:aura": "eslint **/aura/**",
@@ -13,7 +14,8 @@
     "test:unit:debug": "sfdx-lwc-jest --debug",
     "test:unit:coverage": "sfdx-lwc-jest --coverage",
     "prettier": "prettier --write \"**/*.{cls,cmp,component,css,html,js,json,md,page,trigger,xml,yaml,yml}\"",
-    "prettier:verify": "prettier --list-different \"**/*.{cls,cmp,component,css,html,js,json,md,page,trigger,xml,yaml,yml}\""
+    "prettier:verify": "prettier --list-different \"**/*.{cls,cmp,component,css,html,js,json,md,page,trigger,xml,yaml,yml}\"",
+    "debug": "node --inspect-brk --inspect ./node_modules/.bin/jest -i"
   },
   "devDependencies": {
     "@prettier/plugin-xml": "^0.12.0",
@@ -41,7 +43,9 @@
     ]
   },
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "babel-jest": "^26.6.3"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/tuannguyenvn/SFDX_ps1.git"
@@ -51,5 +55,26 @@
   "bugs": {
     "url": "https://github.com/tuannguyenvn/SFDX_ps1/issues"
   },
-  "homepage": "https://github.com/tuannguyenvn/SFDX_ps1#readme"
+  "homepage": "https://github.com/tuannguyenvn/SFDX_ps1#readme",
+  "jest": {
+    "transform": {
+      "^.+\\.js$": "babel-jest",
+      "^.+\\.mjs$": "babel-jest"
+    },
+    "transformIgnorePatterns": [
+      "src/node_modules/(?!@sapper)"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "mjs",
+      "svelte"
+    ],
+    "moduleDirectories": [
+      "node_modules",
+      "src/node_modules"
+    ],
+    "setupFilesAfterEnv": [
+      "@testing-library/jest-dom/extend-expect"
+    ]
+  }
 }
