@@ -1,0 +1,22 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "note",
+  "steps": [
+    {
+      "file": "force-app/main/default/lwc/leadMap/leadMap.js",
+      "line": 10,
+      "description": "add properties ",
+      "selection": {
+        "start": {
+          "line": 22,
+          "character": 22
+        },
+        "end": {
+          "line": 22,
+          "character": 33
+        }
+      }
+    }
+  ],
+  "ref": "BuildingYourFirstLWC"
+}
