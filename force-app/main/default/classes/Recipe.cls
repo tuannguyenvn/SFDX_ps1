@@ -1,69 +1,77 @@
-public class Recipe {
-   public string name;
-   public string instructions;
-   public final static integer MAX_TEMP;
-   static {
-       MAX_TEMP = 550;
-   }
-   private boolean bFirst = false;
-   private static boolean bRecipesExist = false;	
+public class Recipe implements Comparable {
+  public string name;
+  public string instructions;
+  public final static integer MAX_TEMP;
+  static {
+    MAX_TEMP = 550;
+  }
+  private boolean bFirst = false;
+  private static boolean bRecipesExist = false;
 
-   private List<Ingredient> lstIngredients;
-    
-   private class Ingredient {
-       private string name;
-       private string quantity;
-       
-       public Ingredient(string inName, string inQuantity) {
-           name = inName;
-           quantity = inQuantity;
-       }
-       
-       public void printDescription() {
-           system.debug('...' + name + ', ' + quantity);
-       }
-   }
+  private List<Ingredient> lstIngredients;
 
-   public List<Ingredient> IstIngredients {
-        get {return lstIngredients;}
-   }
+  private class Ingredient {
+    private string name;
+    private string quantity;
 
-   public Boolean B_First {
-       get {return bFirst;}
-   }
+    public Ingredient(string inName, string inQuantity) {
+      name = inName;
+      quantity = inQuantity;
+    }
 
-   public Recipe () {
+    public void printDescription() {
+      system.debug('...' + name + ', ' + quantity);
+    }
+  }
+
+  public List<Ingredient> IstIngredients {
+    get {
+      return lstIngredients;
+    }
+  }
+
+  public Boolean B_First {
+    get {
+      return bFirst;
+    }
+  }
+
+  public Recipe() {
     if (!bRecipesExist) {
-        bRecipesExist = true;
-        bFirst = true;        
+      bRecipesExist = true;
+      bFirst = true;
+    }
+  }
+  public Recipe(string recipName, string recipInstructions) {
+    this();
+    lstIngredients = new List<Ingredient>();
+    name = recipName;
+    instructions = recipInstructions;
+  }
+
+  public void printDescription() {
+    System.debug('name: ' + name + 'instruction: ' + instructions);
+    for (Ingredient nextIngredient : lstIngredients) {
+      nextIngredient.printDescription();
     }
 
-   }
-   public Recipe (string recipName, string recipInstructions) {
-        this();
-        lstIngredients = new List<Ingredient>();
-        name = recipName;
-        instructions = recipInstructions;
+    if (bFirst) {
+      system.debug('**********');
     }
 
-    public void printDescription () {
-        System.debug('name: ' + name + 'instruction: ' +  instructions);
-        for( Ingredient nextIngredient : lstIngredients) {
-            nextIngredient.printDescription();
-        }
+    return;
+  }
 
-        if( bFirst ) {
-            system.debug('**********');
-        }
+  public Boolean hasInstructions() {
+    return String.isNotEmpty(this.instructions);
+  }
 
-		return;
-    }
+  public void addIngredient(string ingredientName, string quantity) {
+    lstIngredients.add(new Ingredient(ingredientName, quantity));
+  }
 
-    public Boolean hasInstructions () {
-        return String.isNotEmpty(this.instructions) ;
-    }
-
-    public void addIngredient(string ingredientName, string quantity) {
-        lstIngredients.add(new Ingredient(ingredientName, quantity));
-    }
+  public Integer compareTo(Object compareTo) {
+    Recipe compareToRecip = (Recipe) compareTo;
+    return name.compareTo(compareToRecip.name);
+  }
 }
