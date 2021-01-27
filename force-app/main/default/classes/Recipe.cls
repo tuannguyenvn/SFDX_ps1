@@ -1,6 +1,4 @@
-public class Recipe implements Comparable {
-  public string name;
-  public string instructions;
+public class Recipe extends Template implements Comparable {
   public final static integer MAX_TEMP;
   static {
     MAX_TEMP = 550;
@@ -49,8 +47,7 @@ public class Recipe implements Comparable {
     instructions = recipInstructions;
   }
 
-  public void printDescription() {
-    System.debug('name: ' + name + 'instruction: ' + instructions);
+  public override void printDescription() {
     for (Ingredient nextIngredient : lstIngredients) {
       nextIngredient.printDescription();
     }
