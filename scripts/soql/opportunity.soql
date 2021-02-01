@@ -6,3 +6,13 @@ SELECT  Id,
 FROM Opportunity
 WHERE Account.Industry = 'Hospitality'
 AND Account.AnnualRevenue > 5000
+
+SELECT  Id, 
+        Amount,
+        StageName,
+        (
+            SELECT  Role,
+                    ContactId
+            FROM OpportunityContactRoles
+        )
+FROM Opportunity
