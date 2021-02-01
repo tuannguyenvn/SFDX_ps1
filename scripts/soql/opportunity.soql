@@ -1,0 +1,8 @@
+SELECT  Id, 
+        Amount,
+        StageName,
+        Account.Name,
+        Account.Industry
+FROM Opportunity
+WHERE Account.Industry = 'Hospitality'
+AND Account.AnnualRevenue > 5000
