@@ -4,9 +4,17 @@
 //     OR Title = 'VP')
 //     AND AccountId != null
 
-SELECT Birthdate
+// SELECT Birthdate
+// FROM Contact
+// WHERE Birthdate > 2000-01-01
+//     AND   Birthdate < 2000-12-31
+//     AND   (Birthdate < 2000-05-01
+//         OR Birthdate >= 2000-06-01)
+
+SELECT Id
 FROM Contact
-WHERE Birthdate > 2000-01-01
-    AND   Birthdate < 2000-12-31
-    AND   (Birthdate < 2000-05-01
-        OR Birthdate >= 2000-06-01)
+WHERE Title = 'Sales Manager'
+    AND Account.AnnualRevenue >=9000 
+    AND Account.NumberOfEmployees > 75
+    AND Account.Industry = 'Finance'
+
