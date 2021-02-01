@@ -18,6 +18,10 @@
 // FROM Opportunity
 
 SELECT  StageName,
-        SUM(Amount)
+        SUM(Amount),
+        MAX(Amount),
+        AVG(Account.AnnualRevenue),
+        COUNT(Id)
 FROM Opportunity
+WHERE Amount != null
 GROUP BY StageName
