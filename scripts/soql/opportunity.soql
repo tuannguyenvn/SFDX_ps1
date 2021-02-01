@@ -1,18 +1,23 @@
-SELECT  Id, 
-        Amount,
-        StageName,
-        Account.Name,
-        Account.Industry
-FROM Opportunity
-WHERE Account.Industry = 'Hospitality'
-AND Account.AnnualRevenue > 5000
+// SELECT  Id, 
+//         Amount,
+//         StageName,
+//         Account.Name,
+//         Account.Industry
+// FROM Opportunity
+// WHERE Account.Industry = 'Hospitality'
+// AND Account.AnnualRevenue > 5000
 
-SELECT  Id, 
-        Amount,
-        StageName,
-        (
-            SELECT  Role,
-                    ContactId
-            FROM OpportunityContactRoles
-        )
+// SELECT  Id, 
+//         Amount,
+//         StageName,
+//         (
+//             SELECT  Role,
+//                     ContactId
+//             FROM OpportunityContactRoles
+//         )
+// FROM Opportunity
+
+SELECT  StageName,
+        SUM(Amount)
 FROM Opportunity
+GROUP BY StageName
