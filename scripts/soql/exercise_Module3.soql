@@ -1,0 +1,5 @@
+SELECT Name
+FROM Contact
+WHERE (Title = 'CEO'
+    OR Title = 'VP')
+    AND AccountId != null
